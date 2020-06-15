@@ -77,7 +77,33 @@ module.exports = {
 
     },
 
-    'Test 3 - Enter And Submit Valid Data From The "Filter String" Field': browser => {
+        'Test 3 - Enter And Submit Invalid Data From The "Filter Object" Field': browser => {
+        autoBasic
+            .setValue("@inputFilterObject", 'blah')
+            .click("@buttonFilterObject")
+            .verify.containsText("@resultFilterObject", '[]')
+            .clearValue("@inputFilterObject")
+
+            .setValue("@inputFilterObject", '////////////////////')
+            .click("@buttonFilterObject")
+            .verify.containsText("@resultFilterObject", '[]')
+            .clearValue("@inputFilterObject")
+
+            .setValue("@inputFilterObject", '1234567890')
+            .click("@buttonFilterObject")
+            .verify.containsText("@resultFilterObject", '[]')
+            .clearValue("@inputFilterObject")
+
+            .setValue("@inputFilterObject", 'NAME')
+            .click("@buttonFilterObject")
+            .verify.containsText("@resultFilterObject", '[]')
+            .clearValue("@inputFilterObject")
+
+            .pause(3000)
+
+    },
+
+    'Test 4 - Enter And Submit Valid Data From The "Filter String" Field': browser => {
         autoBasic
             .setValue("@inputFilterString", 'James')
             .click("@buttonFilterString")
@@ -123,7 +149,7 @@ module.exports = {
 
     },
 
-    'Test 4 -  Enter And Submit Valid Data From The "Palindrome" Field': browser => {
+    'Test 5 -  Enter And Submit Valid Data From The "Palindrome" Field': browser => {
         autoBasic
             .setValue("@inputPalindrome", 'racecar')
             .click("@buttonPalindrome")
@@ -144,7 +170,7 @@ module.exports = {
 
     },
 
-    'Test 5 - Enter And Submit Invalid Data From The "Palindrome" Field': browser => {
+    'Test 6 - Enter And Submit Invalid Data From The "Palindrome" Field': browser => {
         autoBasic
             .setValue("@inputPalindrome", 'blah')
             .click("@buttonPalindrome")
@@ -167,7 +193,7 @@ module.exports = {
 
     },
 
-    'Test 6 - Enter And Submit Valid Data From The "Sum" Field': browser => {
+    'Test 7 - Enter And Submit Valid Data From The "Sum" Field': browser => {
         autoBasic
             .setValue("@inputSumOne", '1')
             .setValue("@inputSumTwo", '2')
