@@ -1,10 +1,11 @@
-
 var autoBasic = {}
 
 module.exports = {
     beforeEach: browser => {
         autoBasic = browser.page.automationBasicsPage()
-        autoBasic.navigate()
+        autoBasic
+            .maximizeWindow()
+            .navigate()
     },
     after: browser => {
         autoBasic.end()
@@ -46,9 +47,6 @@ module.exports = {
             .verify.containsText("@resultEven", "[]")
             .verify.containsText("@resultOdd", "[5]")
             .clearValue("@inputEvensOdds")
-
-            .pause(3000)
-
     },
 
     'Test 2 - Enter And Submit Valid Data From The "Filter Object" Field': browser => {
@@ -72,9 +70,6 @@ module.exports = {
             .click("@buttonFilterObject")
             .verify.containsText("@resultFilterObject", '[ { "name": "Jeremy Schrader", "age": 24, "hairColor": "brown" } ]')
             .clearValue("@inputFilterObject")
-
-            .pause(3000)
-
     },
 
         'Test 3 - Enter And Submit Invalid Data From The "Filter Object" Field': browser => {
@@ -98,9 +93,6 @@ module.exports = {
             .click("@buttonFilterObject")
             .verify.containsText("@resultFilterObject", '[]')
             .clearValue("@inputFilterObject")
-
-            .pause(3000)
-
     },
 
     'Test 4 - Enter And Submit Valid Data From The "Filter String" Field': browser => {
@@ -144,9 +136,6 @@ module.exports = {
             .click("@buttonFilterString")
             .verify.containsText("@resultFilterString", "Maddy")
             .clearValue("@inputFilterString")
-
-            .pause(3000)
-
     },
 
     'Test 5 -  Enter And Submit Valid Data From The "Palindrome" Field': browser => {
@@ -165,9 +154,6 @@ module.exports = {
             .click("@buttonPalindrome")
             .verify.containsText("@resultPalindrome", "true")
             .clearValue("@inputPalindrome")
-
-            .pause(3000)
-
     },
 
     'Test 6 - Enter And Submit Invalid Data From The "Palindrome" Field': browser => {
@@ -188,9 +174,6 @@ module.exports = {
             .click("@buttonPalindrome")
             .verify.containsText("@resultPalindrome", "false")
             .clearValue("@inputPalindrome")
-
-            .pause(3000)
-
     },
 
     'Test 7 - Enter And Submit Valid Data From The "Sum" Field': browser => {
@@ -215,8 +198,5 @@ module.exports = {
             .verify.containsText("@resultSum", "300")
             .clearValue("@inputSumOne")
             .clearValue("@inputSumTwo")
-
-            .pause(3000)
-
     }
 }
