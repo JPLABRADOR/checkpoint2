@@ -22,6 +22,5 @@ module.exports = {
         inputSumTwo: "input[name='sumInput2']",
         buttonSum: "button[name='sumButton']",
         resultSum: "span[name='sumResults']",
-
     }
 }
