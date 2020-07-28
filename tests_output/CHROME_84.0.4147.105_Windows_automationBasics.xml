@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="10">
+
+  <testsuite name="automationBasics"
+    errors="0" failures="0" hostname="" id="" package="automationBasics" skipped="0"
+    tests="10" time="15.32" timestamp="">
+  
+    <testcase name="Test 1 - Enter And Submit Valid Data From The &#34;Evens and Odds&#34; Field" classname="automationBasics" time="5.183" assertions="22">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 2 - Enter And Submit Invalid Data From The &#34;Evens and Odds&#34; Field" classname="automationBasics" time="0.9670" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 3 - Enter And Submit Valid Data From The &#34;Filter Object&#34; Field" classname="automationBasics" time="0.9160" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 4 - Enter And Submit Invalid Data From The &#34;Filter Object&#34; Field" classname="automationBasics" time="0.9150" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 5 - Enter And Submit Valid Data From The &#34;Filter String&#34; Field" classname="automationBasics" time="1.479" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 6 - Enter And Submit Invalid Data From The &#34;Filter String&#34; Field" classname="automationBasics" time="0.7960" assertions="4">
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 7 -  Enter And Submit Valid Data From The &#34;Palindrome&#34; Field" classname="automationBasics" time="0.6280" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 8 - Enter And Submit Invalid Data From The &#34;Palindrome&#34; Field" classname="automationBasics" time="0.7570" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 9 - Enter And Submit Valid Data From The &#34;Sum&#34; Field" classname="automationBasics" time="2.358" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Test 10 - Enter And Submit Invalid Data From The &#34;Sum&#34; Field" classname="automationBasics" time="1.323" assertions="5">
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
