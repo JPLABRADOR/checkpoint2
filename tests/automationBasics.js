@@ -1,202 +1,73 @@
-var autoBasic = {}
+var autoBasics = {}
+var validEvensOddsFieldData = require('../testAssets/validEvensOddsArray')
+var invalidEvensOddsFieldData = require('../testAssets/invalidEvensOddsArray')
+var validFilterObjectFieldData = require('../testAssets/validFilterObjectArray')
+var invalidFilterObjectFieldData = require('../testAssets/invalidFilterObjectArray')
+var validFilterStringFieldData = require('../testAssets/validFilterStringArray')
+var invalidFilterStringFieldData = require('../testAssets/invalidFilterStringArray')
+var validPalindromeFieldData = require('../testAssets/validPalindromeArray')
+var invalidPalindromeFieldData = require('../testAssets/invalidPalindromeArray')
+var validSumFieldData = require('../testAssets/validSumArray')
+var invalidSumFieldData = require('../testAssets/invalidSumArray')
 
 module.exports = {
     beforeEach: browser => {
-        autoBasic = browser.page.automationBasicsPage()
-        autoBasic
+        autoBasics = browser.page.automationBasicsPage()
+        autoBasics
             .maximizeWindow()
             .navigate()
     },
     after: browser => {
-        autoBasic.end()
+        autoBasics.end()
     },
-
     'Test 1 - Enter And Submit Valid Data From The "Evens and Odds" Field': browser => {
-        autoBasic   
-            .setValue("@inputEvensOdds", '0')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[0]")
-            .verify.containsText("@resultOdd", "[]")
-            .clearValue("@inputEvensOdds")
-
-            .setValue("@inputEvensOdds", '1')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[]")
-            .verify.containsText("@resultOdd", "[1]")
-            .clearValue("@inputEvensOdds")
-
-            .setValue("@inputEvensOdds", '2')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[2]")
-            .clearValue("@inputEvensOdds")
-            
-            .setValue("@inputEvensOdds", '3')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[]")
-            .verify.containsText("@resultOdd", "[3]")
-            .clearValue("@inputEvensOdds")
-
-            .setValue("@inputEvensOdds", '4')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[4]")
-            .verify.containsText("@resultOdd", "[]")
-            .clearValue("@inputEvensOdds")
-
-            .setValue("@inputEvensOdds", '5')
-            .click("@buttonEvensOdds")
-            .verify.containsText("@resultEven", "[]")
-            .verify.containsText("@resultOdd", "[5]")
-            .clearValue("@inputEvensOdds")
+        validEvensOddsFieldData.forEach(test => {
+            autoBasics.evensAndOdds(test)
+        })
     },
-
-    'Test 2 - Enter And Submit Valid Data From The "Filter Object" Field': browser => {
-        autoBasic
-            .setValue("@inputFilterObject", 'name')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[ { "name": "Jimmy Joe", "title": "Hack0r", "age": 12 }, { "name": "Jeremy Schrader", "age": 24, "hairColor": "brown" }, { "name": "Carly Armstrong", "title": "CEO" } ]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", 'title')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[ { "name": "Jimmy Joe", "title": "Hack0r", "age": 12 }, { "name": "Carly Armstrong", "title": "CEO" } ]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", 'age')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[ { "name": "Jimmy Joe", "title": "Hack0r", "age": 12 }, { "name": "Jeremy Schrader", "age": 24, "hairColor": "brown" } ]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", 'hairColor')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[ { "name": "Jeremy Schrader", "age": 24, "hairColor": "brown" } ]')
-            .clearValue("@inputFilterObject")
+    'Test 2 - Enter And Submit Invalid Data From The "Evens and Odds" Field': browser => {
+        invalidEvensOddsFieldData.forEach(test => {
+            autoBasics.evensAndOdds(test)
+        })
     },
-
-        'Test 3 - Enter And Submit Invalid Data From The "Filter Object" Field': browser => {
-        autoBasic
-            .setValue("@inputFilterObject", 'blah')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", '////////////////////')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", '1234567890')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[]')
-            .clearValue("@inputFilterObject")
-
-            .setValue("@inputFilterObject", 'NAME')
-            .click("@buttonFilterObject")
-            .verify.containsText("@resultFilterObject", '[]')
-            .clearValue("@inputFilterObject")
+    'Test 3 - Enter And Submit Valid Data From The "Filter Object" Field': browser => {
+        validFilterObjectFieldData.forEach(test => {
+            autoBasics.filterObject(test)
+        })
     },
-
-    'Test 4 - Enter And Submit Valid Data From The "Filter String" Field': browser => {
-        autoBasic
-            .setValue("@inputFilterString", 'James')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "James")
-            .clearValue("@inputFilterString")
-
-            .setValue("@inputFilterString", 'Jessica')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Jessica")
-            .clearValue("@inputFilterString")
-
-            .setValue("@inputFilterString", 'Melody')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Melody")
-            .clearValue("@inputFilterString")
-            
-            .setValue("@inputFilterString", 'Tyler')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Tyler")
-            .clearValue("@inputFilterString")
-            
-            .setValue("@inputFilterString", 'Blake')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Blake")
-            .clearValue("@inputFilterString")
-            
-            .setValue("@inputFilterString", 'Jennifer')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Jennifer")
-            .clearValue("@inputFilterString")
-            
-            .setValue("@inputFilterString", 'Mark')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Mark")
-            .clearValue("@inputFilterString")
-                        
-            .setValue("@inputFilterString", 'Maddy')
-            .click("@buttonFilterString")
-            .verify.containsText("@resultFilterString", "Maddy")
-            .clearValue("@inputFilterString")
+    'Test 4 - Enter And Submit Invalid Data From The "Filter Object" Field': browser => {
+        invalidFilterObjectFieldData.forEach(test => {
+            autoBasics.filterObject(test)
+        })
     },
-
-    'Test 5 -  Enter And Submit Valid Data From The "Palindrome" Field': browser => {
-        autoBasic
-            .setValue("@inputPalindrome", 'racecar')
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "true")
-            .clearValue("@inputPalindrome")
-
-            .setValue("@inputPalindrome", '!@!')
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "true")
-            .clearValue("@inputPalindrome")
-
-            .setValue("@inputPalindrome", '123454321')
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "true")
-            .clearValue("@inputPalindrome")
+    'Test 5 - Enter And Submit Valid Data From The "Filter String" Field': browser => {
+        validFilterStringFieldData.forEach(test => {
+            autoBasics.filterString(test)
+        })
     },
-
-    'Test 6 - Enter And Submit Invalid Data From The "Palindrome" Field': browser => {
-        autoBasic
-            .setValue("@inputPalindrome", 'blah')
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "false")
-            .clearValue("@inputPalindrome")
-
-            //Doesn't understand capital letters            
-            .setValue("@inputPalindrome", 'Able was I ere I saw Elba') 
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "false")
-            .clearValue("@inputPalindrome")
-
-            //Doesn't understand spaces            
-            .setValue("@inputPalindrome", 'murder for a jar of red rum') 
-            .click("@buttonPalindrome")
-            .verify.containsText("@resultPalindrome", "false")
-            .clearValue("@inputPalindrome")
+    'Test 6 - Enter And Submit Invalid Data From The "Filter String" Field': browser => {
+        invalidFilterStringFieldData.forEach(test => {
+            autoBasics.filterString(test)
+        })
     },
-
-    'Test 7 - Enter And Submit Valid Data From The "Sum" Field': browser => {
-        autoBasic
-            .setValue("@inputSumOne", '1')
-            .setValue("@inputSumTwo", '2')
-            .click("@buttonSum")
-            .verify.containsText("@resultSum", "3")
-            .clearValue("@inputSumOne")
-            .clearValue("@inputSumTwo")
-
-            .setValue("@inputSumOne", '10')
-            .setValue("@inputSumTwo", '20')
-            .click("@buttonSum")
-            .verify.containsText("@resultSum", "30")
-            .clearValue("@inputSumOne")
-            .clearValue("@inputSumTwo")
-
-            .setValue("@inputSumOne", '100')
-            .setValue("@inputSumTwo", '200')
-            .click("@buttonSum")
-            .verify.containsText("@resultSum", "300")
-            .clearValue("@inputSumOne")
-            .clearValue("@inputSumTwo")
+    'Test 7 -  Enter And Submit Valid Data From The "Palindrome" Field': browser => {
+        validPalindromeFieldData.forEach(test => {
+            autoBasics.palindrome(test)
+        })
+    },
+    'Test 8 - Enter And Submit Invalid Data From The "Palindrome" Field': browser => {
+        invalidPalindromeFieldData.forEach(test => {
+            autoBasics.palindrome(test)
+        })
+    },
+    'Test 9 - Enter And Submit Valid Data From The "Sum" Field': browser => {
+        validSumFieldData.forEach(test => {
+            autoBasics.sum(test)
+        })
+    },
+    'Test 10 - Enter And Submit Invalid Data From The "Sum" Field': browser => {
+        invalidSumFieldData.forEach(test => {
+            autoBasics.sum(test)
+        })
     }
 }
