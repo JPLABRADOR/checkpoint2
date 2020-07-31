@@ -1,6 +1,8 @@
 # checkpoint2
 Automated testing for the "Automation-Basics" web application. Browser automation created using Nightwatch.js.
 
+Website: https://devmountain-qa.github.io/Automation-Basics/build/
+
 #### Instructions:
 Install NodeJS (includes npm): https://nodejs.org/en/download/
 
