@@ -21,5 +21,5 @@ cd checkpoint2
 ```
 Execute the "checkpoint2" automation:
 ```
-nightwatch /tests/automationBasics.js
+nightwatch tests/automationBasics.js
 ```
