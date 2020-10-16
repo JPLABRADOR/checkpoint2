@@ -19,6 +19,10 @@ Navigate to the newly cloned directory:
 ```
 cd checkpoint2
 ```
+Install chromedriver for the project:
+```
+npm install chromedriver --save-dev
+```
 Execute the "checkpoint2" automation:
 ```
 nightwatch tests/automationBasics.js
